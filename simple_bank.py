@@ -3,6 +3,13 @@ class Bank:
     loanAmount = 0
     loanFeature = True
 
+    @staticmethod
+    def showLoan_feature():
+        if Bank.loanFeature:
+            print("ON")
+        else:
+            print("OFF")
+
 
 class User():
     __userBalance = 0
@@ -42,12 +49,33 @@ class User():
 # user1.withdrawAmount(500)
 # user1.userDetails()
 
+class Admin():
+
+    @staticmethod
+    def admin_account(name, age, gender):
+        return User(name, age, gender)
+
+    
+    @staticmethod
+    def switch_loan(value):
+        Bank.loanFeature = value
+
+    @staticmethod
+    def bank_details():
+        print("Bank Details")
+        print("----------------------")
+        print("Total Balance: ",Bank.totalBalance)
+        print("Loan Amount: ",Bank.loanAmount)
+        print("Loan Feature: ",Bank.showLoan_feature())
 
 
-user1 = User("Mst. Shakira Mostarin Raisa", 22, "Female")
-user1.depsitAmount(6000)
-user1.withdrawAmount(500)
-user1.userDetails()
+# user1 = User("Mst. Shakira Mostarin Raisa", 22, "Female")
+# user1.depsitAmount(6000)
+# user1.withdrawAmount(500)
+# user1.userDetails()
 
+admin = Admin.admin_account("arif", 24, "Male")
+admin.userDetails()
 
+Admin.bank_details()
 
