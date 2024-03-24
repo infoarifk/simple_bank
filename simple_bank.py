@@ -101,4 +101,4 @@ user2.withdrawAmount(100000)
 
 user2.transactionHistory()
 
-
+Admin.bank_details()
