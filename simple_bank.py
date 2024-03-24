@@ -6,9 +6,9 @@ class Bank:
     @staticmethod
     def showLoan_feature():
         if Bank.loanFeature:
-            print("ON")
+            return "ON"
         else:
-            print("OFF")
+           return "OFF"
 
 
 class User():
@@ -42,6 +42,18 @@ class User():
         else:
             self.tansaction.append(("Faild operation", amount))
             print("Your Balance is Low")
+    
+    def transfer(self, toName, amount):
+        if self.__userBalance>=amount:
+            self.__userBalance-=amount
+            self.tansaction.append((f"Transfer to {toName}", amount))
+        else:
+            self.tansaction.append(("Faild Transfer", amount))
+            print("You have not sufficient Balance")
+
+    def transactionHistory(self):
+        for history in self.tansaction:
+            print(history)
 
     def userDetails(self):
         print("Personal Details: ")
@@ -75,8 +87,18 @@ class Admin():
 
 
 
-admin = Admin.admin_account("arif", 24, "Male")
-admin.userDetails()
+# admin = Admin.admin_account("arif", 24, "Male")
+# admin.userDetails()
 
-Admin.bank_details()
+# Admin.bank_details()
+user1 =  User("Raisa", 24, "Female")
+user1.depsitAmount(20100)
+
+user2 = User("Arif", 14, "Male")
+user2.depsitAmount(5000)
+
+user2.withdrawAmount(100000)
+
+user2.transactionHistory()
+
 
