@@ -12,27 +12,35 @@ class Bank:
 
 
 class User():
-    __userBalance = 0
-    __userLoan = 0
+    
     def __init__(self,name, age, gender) -> None:
         self.userName= name
         self.userAge = age
         self.userGender=gender
+        self.__userBalance = 0
+        self.__userLoan = 0
+        self.tansaction = []
 
     def depsitAmount(self,amount):
-        self.deposit = amount
-        if self.deposit>0:
-            self.__userBalance +=self.deposit
+        
+        if amount>0:
+            self.__userBalance +=amount
+            Bank.totalBalance +=amount
+            self.tansaction.append(("Deposit: ", amount))
             print("Deposit Successful")
+
         else:
             print("Invalid amount")
+            self.tansaction.append(("Faild operation", amount))
 
     def withdrawAmount(self, amount):
-        self.withdraw = amount
-        if self.__userBalance>=self.withdraw:
-            self.__userBalance -= self.withdraw
+        
+        if self.__userBalance>=amount:
+            self.__userBalance -= amount
+            self.tansaction.append(("Withdraw: ", amount))
             print("Withdraw Successful")
         else:
+            self.tansaction.append(("Faild operation", amount))
             print("Your Balance is Low")
 
     def userDetails(self):
@@ -44,10 +52,7 @@ class User():
         print("Balance: ", self.__userBalance)
         print("Loan: ", self.__userLoan)
 
-# user1 = User("Mst. Shakira Mostarin Raisa", 22, "Female")
-# user1.depsitAmount(6000)
-# user1.withdrawAmount(500)
-# user1.userDetails()
+
 
 class Admin():
 
@@ -69,10 +74,6 @@ class Admin():
         print("Loan Feature: ",Bank.showLoan_feature())
 
 
-# user1 = User("Mst. Shakira Mostarin Raisa", 22, "Female")
-# user1.depsitAmount(6000)
-# user1.withdrawAmount(500)
-# user1.userDetails()
 
 admin = Admin.admin_account("arif", 24, "Male")
 admin.userDetails()
