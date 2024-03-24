@@ -1,3 +1,9 @@
+class Bank:
+    totalBalance = 0
+    loanAmount = 0
+    loanFeature = True
+
+
 class User():
     __userBalance = 0
     __userLoan = 0
@@ -6,7 +12,7 @@ class User():
         self.userAge = age
         self.userGender=gender
 
-    def __depsitAmount(self,amount):
+    def depsitAmount(self,amount):
         self.deposit = amount
         if self.deposit>0:
             self.__userBalance +=self.deposit
@@ -14,7 +20,7 @@ class User():
         else:
             print("Invalid amount")
 
-    def __withdrawAmount(self, amount):
+    def withdrawAmount(self, amount):
         self.withdraw = amount
         if self.__userBalance>=self.withdraw:
             self.__userBalance -= self.withdraw
@@ -22,7 +28,7 @@ class User():
         else:
             print("Your Balance is Low")
 
-    def __userDetails(self):
+    def userDetails(self):
         print("Personal Details: ")
         print("-------------------------")
         print("Name: ", self.userName)
@@ -30,3 +36,18 @@ class User():
         print("Gender: ", self.userGender)
         print("Balance: ", self.__userBalance)
         print("Loan: ", self.__userLoan)
+
+# user1 = User("Mst. Shakira Mostarin Raisa", 22, "Female")
+# user1.depsitAmount(6000)
+# user1.withdrawAmount(500)
+# user1.userDetails()
+
+
+
+user1 = User("Mst. Shakira Mostarin Raisa", 22, "Female")
+user1.depsitAmount(6000)
+user1.withdrawAmount(500)
+user1.userDetails()
+
+
+
